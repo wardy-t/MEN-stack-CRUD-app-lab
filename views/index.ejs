@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beef List</title>
+</head>
+<body>
+    
+    <h1>Got Beef?</h1>
+    <p>Find out about different cuts of beef</p>
+
+    <% beefs.forEach(beef => { %>
+        <div>
+            <h2><%= beef.name %></h2>
+            <p><%= beef.description %></p>
+
+            <form action="/beef/<%= beef._id %>?_method=DELETE" method="POST" style="display: inline;">
+                <button type="submit">Delete Beef</button>
+            </form>
+        </div>
+    <% }) %>
+
+</body>
+</html>
