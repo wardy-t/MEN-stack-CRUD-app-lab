@@ -12,14 +12,11 @@
 
     <% beefs.forEach(beef => { %>
         <div>
-            <h2><%= beef.name %></h2>
-            <p><%= beef.description %></p>
+            <h2> <a href="/beef/<%= beef._id %>"><%= beef.name %> </a> </h2>
 
-            <form action="/beef/<%= beef._id %>?_method=DELETE" method="POST" style="display: inline;">
-                <button type="submit">Delete Beef</button>
-            </form>
+
         </div>
     <% }) %>
-
+    <a href="/beef/new"> <p>Add Beef</p></a>
 </body>
 </html>

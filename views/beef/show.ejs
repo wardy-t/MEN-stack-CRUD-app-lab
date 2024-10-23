@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=beef.name%></title>
+</head>
+<body>
+    <h2><%=beef.name%></h2>
+    <p><%=beef.description%></p>
+    <form action="/beef/<%= beef._id %>?_method=DELETE" method="POST" style="display: inline;">
+        <button type="submit">Delete Beef</button>
+    </form>
+    <a href= "/beef/<%=beef._id %>/edit"><p>Edit Beef</p></a>
+    <a href="/beef"> <p>Go back</p></a>
+</body>
+</html>

@@ -22,11 +22,17 @@ app.get('/', (req, res) => {
 app.get('/beef', async (req, res) => {
     const allBeefs = await Beef.find();
     
-    res.render('index.ejs', { beefs: allBeefs });
+    res.render('beef/index.ejs', { beefs: allBeefs });
 });
 
 app.get('/beef/new', (req, res) => {
     res.render('beef/new.ejs')
+});
+
+app.get('/beef/:id', async (req, res) => {
+    const singleBeef = await Beef.findById(req.params.id);
+    
+    res.render('beef/show.ejs', { beef: singleBeef });
 });
 
 app.post('/beef', async (req, res) => {
@@ -35,20 +41,20 @@ app.post('/beef', async (req, res) => {
     res.redirect('/beef');
 });
 
-app.get('/beef/name/:name/edit', async (req, res) => {
-    const beef = await Beef.findOne({ name: req.params.name});
+app.get('/beef/:id/edit', async (req, res) => {
+    const beef = await Beef.findById(req.params.id);
     
     res.render('beef/edit.ejs', { beef });
 });
 
-app.put('/beef/name/:name', async (req, res) => {
-    await Beef.findOneAndUpdate({ name: req.params.name}, req.body);
+app.put('/beef/:id', async (req, res) => {
+    await Beef.findByIdAndUpdate(req.params.id, req.body);
     
-    res.redirect('/beef');
+    res.redirect(`/beef/${req.params.id}`);
 });
 
-app.delete('/beef/name/:name', async (req, res) => {
-    await Beef.findOneAndDelete(req.params.name);
+app.delete('/beef/:id', async (req, res) => {
+    await Beef.findByIdAndDelete(req.params.id);
     
     res.redirect('/beef');
 });

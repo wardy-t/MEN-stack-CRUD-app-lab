@@ -11,17 +11,12 @@
     <form action="/beef/<%= beef._id %>?_method=PUT" method="POST">
         <div>
             <label for="name">Name:</label>
-            <input type="text" name="name" id="name" />
+            <input type="text" name="name" id="name" value="<%=beef.name%>" />
         </div>
 
         <div>
             <label for="description">Description:</label>
-            <input type="text" name="description" id="description" />
-        </div>
-
-        <div>
-            <label for="image">Image:</label>
-            <input type="text" name="image" id="image" />
+            <input type="text" name="description" id="description" value="<%=beef.description%>"/>
         </div>
 
         <button type="submit">Update beef</button>
